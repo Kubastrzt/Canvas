@@ -288,13 +288,13 @@ canvas3.height=window.innerHeight/2
 var c = canvas3.getContext('2d')
 
 
-function Circular(x,y,radius,color){
+function Circular(x,y,radius,color,velocity){
     this.x = x
     this.y = y
     this.radius = radius
     this.color = color
     this.radians = Math.random() * Math.PI * 2
-    this.velocity=  Math.random()*(0.07-0.01)+0.01
+    this.velocity= velocity
     this.distance= randomINT(50,400)
     this.lastMouse={
         x: x,
@@ -323,14 +323,23 @@ function Circular(x,y,radius,color){
 }
 
 let circularParticles
+var velocity
 function createCircular(){
     circularParticles = []
     for(var i=0;i<150;i++){
         const radius = randomINT(3, 10)
-        circularParticles.push(new Circular(canvas3.width/2,canvas3.height/2,radius,randomColorPicker(colorPallette2)))
+        velocity= Math.random()*(0.07-0.01)+0.01
+        circularParticles.push(new Circular(canvas3.width/2,canvas3.height/2,radius,randomColorPicker(colorPallette2),velocity))
     }
 }
-
+function pushSpeed(){
+    for(var i=0;i<circularParticles.length;i++){
+        circularParticles[i].velocity=-circularParticles[i].velocity
+    }
+}
+canvas3.addEventListener('click', ()=>{
+    pushSpeed()
+})
 
 
 function display(){
@@ -355,7 +364,7 @@ var ct = canvas4.getContext('2d')
 
 
 var gravity=1
-var pull = 0.6
+var pull = 0.9
 function Ball(x,y,dx,dy,radius,color){
     this.x=x
     this.y=y
