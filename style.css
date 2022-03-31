@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: rgb(30, 28, 41);
+}
+canvas{
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#canv1{
+    grid-column: 1;
+}
+#canv2{
+    grid-column: 2;
+}
+#canv3{
+    grid-column: 1;
+}
+#canv4{
+    grid-column: 2;
+}
