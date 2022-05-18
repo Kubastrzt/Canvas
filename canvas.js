@@ -355,7 +355,7 @@ function display(){
 createCircular()
 display()
 
-//Gravitation 
+//Gravity 
 
 var canvas4=document.querySelector('#canv4')
 canvas4.width=window.innerWidth/2
